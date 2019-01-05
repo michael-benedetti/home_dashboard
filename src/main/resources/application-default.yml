@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/home_dashboard
+    username: ${HOME_DASHBOARD_DB_USER}
+    password: ${HOME_DASHBOARD_DB_PASS}
