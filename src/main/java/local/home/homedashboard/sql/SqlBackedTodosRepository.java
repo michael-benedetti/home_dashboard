@@ -11,4 +11,6 @@ public interface SqlBackedTodosRepository extends CrudRepository<Todo, Long> {
     List<Todo> findAll();
 
     Todo save(Todo newTodo);
+
+    void deleteAll();
 }
