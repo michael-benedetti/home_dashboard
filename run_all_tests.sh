@@ -1,2 +1,4 @@
+#!/usr/bin/env bash
+
 ./gradlew clean test
-cd client && yarn test && cd ..
+yarn test

@@ -9,10 +9,10 @@
     "tslib": "^1.9.3"
   },
   "scripts": {
-    "start": "webpack-dev-server --mode development --config ./webpack.dev.config",
-    "build": "webpack --mode production --config ./webpack.config",
-    "postbuild": "echo copying files; cp -f -R ./dist/* ../src/main/resources/static",
-    "test": "karma start karma.conf.js"
+    "start": "webpack-dev-server --mode development --config ./client/webpack.dev.config",
+    "build": "webpack --mode production --config ./client/webpack.config",
+    "postbuild": "echo copying files; cp -f -R ./client/dist/* src/main/resources/static",
+    "test": "karma start client/karma.conf.js"
   },
   "devDependencies": {
     "@types/react": "^16.7.18",

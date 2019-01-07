@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 type mysql >/dev/null 2>&1 || sudo apt install mysql-server
 
 echo export HOME_DASHBOARD_DB_USER=home_dashboard_user >> ~/.env
