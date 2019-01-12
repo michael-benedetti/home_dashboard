@@ -11,10 +11,6 @@ const config = {
     port: 3000,
     contentBase: path.resolve(__dirname, 'src'),
     historyApiFallback: true,
-    proxy: {
-      '/api': 'http://localhost:8080',
-      '/reseed': 'http://localhost:8080'
-    }
   }
 }
 

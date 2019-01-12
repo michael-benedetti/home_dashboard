@@ -1,11 +1,22 @@
 import * as  React from 'react';
-import * as ReactDOM from 'react-dom';
 import App from '../src/App';
+import {cleanup, render, RenderResult} from "react-testing-library";
 
 describe("Home Dashboard", () => {
-    it("renders without crashing", () => {
-        const div = document.createElement('div');
-        ReactDOM.render(<App/>, div);
-        ReactDOM.unmountComponentAtNode(div);
+    let container: RenderResult;
+
+    afterEach(async () => {
+        await cleanup();
+    });
+
+    function renderApp() {
+        container = render(
+            <App/>,
+        );
+    }
+
+    it("renders the app", async () => {
+        renderApp();
+        await container.getByText("Welcome.");
     });
 })
