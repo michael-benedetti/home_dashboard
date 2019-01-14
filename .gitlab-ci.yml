@@ -1,0 +1,13 @@
+image:
+  name: adambray/matcha-ice-cream
+  entrypoint:
+    - '/usr/bin/env'
+    - 'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+
+stages:
+  - test
+
+test:
+  stage: test
+  script: pipeline/gitlab_ci_test.sh
+
