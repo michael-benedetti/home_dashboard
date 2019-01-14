@@ -9,9 +9,9 @@ stages:
 
 variables:
   MYSQL_DATABASE: home_dashboard
-  MYSQL_PASSWORD: test
-  MYSQL_USER: test
-  MYSQL_ROOT_PASSWORD: test
+  MYSQL_PASSWORD: home_dashboard_pass
+  MYSQL_USER: home_dashboard_user
+  MYSQL_ROOT_PASSWORD: home_dashboard_pass
 
 test:
   stage: test
