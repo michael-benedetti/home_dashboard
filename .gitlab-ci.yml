@@ -7,6 +7,12 @@ image:
 stages:
   - test
 
+variables:
+  MYSQL_DATABASE: home_dashboard
+  MYSQL_PASSWORD: test
+  MYSQL_USER: test
+  MYSQL_ROOT_PASSWORD: test
+
 test:
   stage: test
   script: pipeline/gitlab_ci_test.sh
