@@ -10,6 +10,11 @@ yarn build
     exit 1
 }
 
-./gradlew build
+{
+   ./gradlew clean test
+} || {
+    kill -9 $(jobs -p)
+    exit 1
+}
 
 exit 0
