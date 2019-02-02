@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
+set -euxo pipefail
 
 yarn install --no-progress
-mkdir src/main/resources/static
+#mkdir src/main/resources/static
 yarn build
 {
     yarn test
