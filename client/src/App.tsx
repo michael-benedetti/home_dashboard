@@ -33,7 +33,7 @@ class App extends Component<AppProps, AppState> {
 
     render() {
         return (
-            <div className="App">
+            <div id="dashboard-parent" className="App">
                 <header className="App-header">
                     <p>
                         Welcome.

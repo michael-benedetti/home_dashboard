@@ -19,4 +19,4 @@ describe("Home Dashboard", () => {
         renderApp();
         await container.getByText("Welcome.");
     });
-})
+});

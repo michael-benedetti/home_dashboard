@@ -18,4 +18,6 @@ yarn build
     exit 1
 }
 
+git login
+
 exit 0

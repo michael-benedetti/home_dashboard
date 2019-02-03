@@ -2,3 +2,4 @@
 
 ./gradlew clean test
 yarn test
+yarn journey
