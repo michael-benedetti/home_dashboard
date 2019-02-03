@@ -1,14 +1,19 @@
 import {WebDriver} from "selenium-webdriver";
-import {loadPage} from "../helpers/journey_helpers";
+import {
+    loadPage,
+    pageToContainText
+} from "../helpers/journey_helpers";
 
-describe("homepage", async () => {
+describe("Home Dashboard", async () => {
     let page: WebDriver;
 
     before(async () => {
         page = await global.browser;
+        await page.get(`${global.journeyHost}/reseed/testFixtures`);
     });
 
     it("loads the dashboard homepage", async () => {
-        await loadPage(page)
-    })
+        await loadPage(page);
+        await pageToContainText("First Test Todo", page);
+    });
 });

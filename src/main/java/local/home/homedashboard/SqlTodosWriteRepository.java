@@ -15,4 +15,9 @@ public class SqlTodosWriteRepository implements TodosWriteRepository {
     public Todo save(Todo newTodo) {
         return sqlBackedTodosRepository.save(newTodo);
     }
+
+    @Override
+    public void deleteAll() {
+        sqlBackedTodosRepository.deleteAll();
+    }
 }
