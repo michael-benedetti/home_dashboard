@@ -1,12 +1,15 @@
 import * as  React from 'react';
 import './App.css';
 import {Component} from "react";
+import {TodosRepository} from "./TodosRepository";
 
 interface AppState {
     todos: Todo[];
+    newTodoDescription: string;
 }
 
 interface AppProps {
+    todosRepository: TodosRepository;
 }
 
 class App extends Component<AppProps, AppState> {
@@ -14,6 +17,7 @@ class App extends Component<AppProps, AppState> {
         super(props);
         this.state = {
             todos: [],
+            newTodoDescription: "",
         }
     }
 
@@ -22,22 +26,27 @@ class App extends Component<AppProps, AppState> {
     }
 
     private getTodos = async () => {
-        await fetch("/api/todos")
-            .then((result) => result.json())
-            .then((json) => {
+        await this.props.todosRepository.fetchTodos()
+            .then((result) => {
                 this.setState({
-                    todos: json,
+                    todos: result,
                 });
             });
-    }
+    };
 
     render() {
         return (
-            <div id="dashboard-parent" className="App">
+            <div className="App">
                 <header className="App-header">
                     <p>
                         Welcome.
                     </p>
+                    <label htmlFor={"newTodoInput"}>New Todo Description</label>
+                    <input
+                        id={"newTodoInput"}
+                        onChange={this.handleDescriptionChange}
+                    />
+
                     <button onClick={this.createNewTodo}>New Todo</button>
                     {this.state.todos.map((todo) => <div key={todo.id}>{todo.description}</div>)}
                 </header>
@@ -46,17 +55,14 @@ class App extends Component<AppProps, AppState> {
     }
 
     private createNewTodo = async () => {
-        await fetch("/api/todos", {
-            method: "POST",
-            body: JSON.stringify({
-                id: null,
-                complete: false,
-                description: "newTodoTest"
-            }),
-            headers: {
-                "Content-Type": "application/json; charset=utf-8",
-            }
-        }).then(this.getTodos);
+        this.props.todosRepository.save({completed: false, description: this.state.newTodoDescription})
+            .then(this.getTodos);
+    }
+
+    private handleDescriptionChange = (e: any) => {
+        this.setState({
+            newTodoDescription: e.target.value,
+        })
     }
 }
 

@@ -1,5 +1,7 @@
 import {WebDriver} from "selenium-webdriver";
 import {
+    elementWithExactText,
+    fillIn,
     loadPage,
     pageToContainText
 } from "../helpers/journey_helpers";
@@ -15,5 +17,13 @@ describe("Home Dashboard", async () => {
     it("loads the dashboard homepage", async () => {
         await loadPage(page);
         await pageToContainText("First Test Todo", page);
+    });
+
+    it("allows the user to add a new todo to the todo list", async () => {
+        await fillIn("newTodoInput", "Second Test Todo", page);
+        const newTodoButton = await elementWithExactText("button", "New Todo", page);
+        await newTodoButton.click();
+
+        await elementWithExactText("div", "Second Test Todo", page);
     });
 });
