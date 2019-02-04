@@ -1,10 +1,11 @@
-import {By, until, WebDriver} from "selenium-webdriver";
+import {WebDriver} from "selenium-webdriver";
 import {
     elementWithExactText,
     fillIn,
     loadPage,
     pageToContainText
 } from "../helpers/journey_helpers";
+import {forIt} from "../helpers";
 
 describe("Home Dashboard", async () => {
     let page: WebDriver;
@@ -16,7 +17,7 @@ describe("Home Dashboard", async () => {
 
     it("loads the dashboard homepage", async () => {
         await loadPage(page);
-        await page.wait(until.elementLocated(By.id("newTodoInput")));
+        await forIt(200);
         await pageToContainText("First Test Todo", page);
     });
 
